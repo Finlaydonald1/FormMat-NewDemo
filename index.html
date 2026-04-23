@@ -2,23 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>FormMat – Smarter Posture, Better Health</title>
+  <title>FormMat | Smarter Movement for Better Health</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
-      --green-main: #1fa37b;
-      --green-dark: #0b5c45;
-      --green-soft: #e4f7f1;
-      --red-accent: #ff4b5c;
-      --bg-dark: #0f172a;
-      --text-main: #0f172a;
-      --text-muted: #6b7280;
+      --green-main: #1fa97a;
+      --green-dark: #0f6b4c;
+      --green-soft: #e4f6f0;
+      --red-main: #e63946;
+      --bg: #f7f9fb;
+      --text-main: #102a43;
+      --text-muted: #627d98;
       --white: #ffffff;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.18);
+      --shadow-soft: 0 14px 30px rgba(15, 107, 76, 0.12);
       --radius-lg: 18px;
       --radius-md: 12px;
       --radius-pill: 999px;
-      --transition-fast: 0.2s ease;
+      --transition: 0.25s ease;
     }
 
     * {
@@ -30,10 +30,9 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
         "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #f0fdf4 0, #f9fafb 40%, #f3f4f6 100%);
+      background: radial-gradient(circle at top left, #f0fff8 0, #f7f9fb 40%, #f5f5f5 100%);
       color: var(--text-main);
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
     }
 
     img {
@@ -57,19 +56,14 @@
       top: 0;
       z-index: 20;
       backdrop-filter: blur(16px);
-      background: linear-gradient(
-        to bottom,
-        rgba(248, 250, 252, 0.9),
-        rgba(248, 250, 252, 0.7),
-        transparent
-      );
-      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      background: rgba(247, 249, 251, 0.9);
+      border-bottom: 1px solid rgba(15, 107, 76, 0.06);
     }
 
     .nav {
       max-width: 1120px;
       margin: 0 auto;
-      padding: 1rem 1.25rem;
+      padding: 0.9rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -79,11 +73,9 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.55rem;
       font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      font-size: 0.9rem;
+      letter-spacing: 0.03em;
       color: var(--green-dark);
     }
 
@@ -91,69 +83,45 @@
       width: 32px;
       height: 32px;
       border-radius: 12px;
-      background: conic-gradient(
-        from 180deg,
-        #22c55e,
-        #16a34a,
-        #22c55e,
-        #f97373,
-        #22c55e
-      );
+      background: conic-gradient(from 210deg, var(--green-main), var(--red-main));
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--white);
       font-size: 0.9rem;
-      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.35);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green-main), var(--red-main));
+      border-radius: 999px;
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
     }
 
     .nav-cta {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.85rem;
-    }
-
-    .nav-pill {
-      padding: 0.25rem 0.75rem;
-      border-radius: 999px;
-      background: rgba(34, 197, 94, 0.08);
-      color: var(--green-dark);
-      border: 1px solid rgba(34, 197, 94, 0.25);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .nav-pill span {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      background: rgba(34, 197, 94, 0.18);
-      font-size: 0.7rem;
-    }
-
-    .nav-link {
-      padding: 0.45rem 0.95rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--text-main);
-      font-weight: 500;
-      cursor: pointer;
-      transition: background var(--transition-fast), transform var(--transition-fast),
-        box-shadow var(--transition-fast), border-color var(--transition-fast);
-    }
-
-    .nav-link:hover {
-      background: var(--green-main);
-      color: var(--white);
-      border-color: transparent;
-      box-shadow: 0 12px 30px rgba(34, 197, 94, 0.35);
-      transform: translateY(-1px);
+      display: none;
     }
 
     main {
@@ -167,7 +135,6 @@
     }
 
     /* Hero */
-
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
@@ -177,493 +144,488 @@
       padding-bottom: 2.5rem;
     }
 
-    .hero-badge {
+    .badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
       padding: 0.25rem 0.75rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.04);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-badge span {
-      padding: 0.15rem 0.55rem;
-      border-radius: 999px;
-      background: rgba(220, 38, 38, 0.08);
-      color: var(--red-accent);
+      border-radius: var(--radius-pill);
+      background: rgba(31, 169, 122, 0.08);
+      color: var(--green-dark);
+      font-size: 0.78rem;
       font-weight: 600;
-      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.9rem;
     }
 
-    .hero-title {
-      font-size: clamp(2.1rem, 3vw + 1.4rem, 3.2rem);
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--red-main);
+      box-shadow: 0 0 0 6px rgba(230, 57, 70, 0.18);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 3vw + 1.2rem, 3.1rem);
       line-height: 1.1;
-      letter-spacing: -0.04em;
-      margin-bottom: 1rem;
-      color: var(--bg-dark);
+      margin-bottom: 0.9rem;
+      letter-spacing: -0.03em;
     }
 
-    .hero-title span {
-      background: linear-gradient(120deg, #22c55e, #16a34a, #f97373);
+    .hero h1 span {
+      background: linear-gradient(120deg, var(--green-main), var(--red-main));
       -webkit-background-clip: text;
       color: transparent;
     }
 
-    .hero-subtitle {
+    .hero-sub {
       font-size: 0.98rem;
       color: var(--text-muted);
       max-width: 32rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .hero-subtitle strong {
-      color: var(--green-dark);
-      font-weight: 600;
-    }
-
-    .hero-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .btn-primary {
-      padding: 0.85rem 1.6rem;
-      border-radius: 999px;
-      border: none;
-      background: radial-gradient(circle at top left, #22c55e, #16a34a);
-      color: var(--white);
-      font-weight: 600;
-      font-size: 0.95rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 18px 45px rgba(34, 197, 94, 0.45);
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
-        filter var(--transition-fast);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 22px 55px rgba(34, 197, 94, 0.55);
-      filter: brightness(1.03);
-    }
-
-    .btn-primary span {
-      font-size: 1.1rem;
-    }
-
-    .btn-ghost {
-      padding: 0.8rem 1.3rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--text-main);
-      font-weight: 500;
-      font-size: 0.9rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      transition: background var(--transition-fast), border-color var(--transition-fast),
-        transform var(--transition-fast), box-shadow var(--transition-fast);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(15, 23, 42, 0.03);
-      border-color: rgba(148, 163, 184, 0.9);
-      transform: translateY(-1px);
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+      margin-bottom: 1.4rem;
     }
 
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
       gap: 1.25rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
+      align-items: center;
+      margin-bottom: 1.6rem;
     }
 
     .hero-meta-item {
       display: flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
     }
 
-    .hero-dot {
-      width: 8px;
-      height: 8px;
+    .hero-meta-pill {
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-pill);
+      background: rgba(230, 57, 70, 0.06);
+      color: var(--red-main);
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .btn {
+      border: none;
+      cursor: pointer;
+      font: inherit;
+      border-radius: var(--radius-pill);
+      padding: 0.75rem 1.4rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      transition: transform var(--transition), box-shadow var(--transition),
+        background var(--transition), color var(--transition), border-color var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green-main), var(--green-dark));
+      color: var(--white);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(15, 107, 76, 0.25);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text-main);
+      border: 1px solid rgba(15, 107, 76, 0.16);
+    }
+
+    .btn-secondary:hover {
+      background: var(--white);
+      border-color: rgba(15, 107, 76, 0.3);
+    }
+
+    .btn-icon {
+      width: 18px;
+      height: 18px;
       border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.25);
+      background: rgba(255, 255, 255, 0.2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-note strong {
+      color: var(--green-dark);
+    }
+
+    .hero-visual {
+      position: relative;
+      padding: 1.4rem;
     }
 
     .hero-card {
-      position: relative;
-      border-radius: 26px;
-      padding: 1.6rem 1.6rem 1.8rem;
-      background: radial-gradient(circle at top left, #0f172a, #020617);
-      color: var(--white);
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.3rem;
       box-shadow: var(--shadow-soft);
+      position: relative;
       overflow: hidden;
-      isolation: isolate;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background:
-        radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.3), transparent 55%),
-        radial-gradient(circle at 100% 0, rgba(248, 113, 113, 0.25), transparent 55%);
-      opacity: 0.9;
-      z-index: -1;
     }
 
     .hero-card-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.2rem;
-    }
-
-    .hero-chip {
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      font-size: 0.75rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .hero-chip-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #22c55e;
+      margin-bottom: 1rem;
     }
 
     .hero-card-title {
-      font-size: 1.05rem;
+      font-size: 0.9rem;
       font-weight: 600;
-      margin-bottom: 0.4rem;
+      color: var(--green-dark);
     }
 
-    .hero-card-sub {
-      font-size: 0.8rem;
-      color: #cbd5f5;
-      margin-bottom: 1.2rem;
-    }
-
-    .hero-card-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.9rem;
-      margin-bottom: 1.4rem;
-    }
-
-    .hero-metric {
-      padding: 0.7rem 0.8rem;
-      border-radius: 16px;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      font-size: 0.8rem;
-    }
-
-    .hero-metric-label {
+    .hero-card-tag {
       font-size: 0.7rem;
-      color: #9ca3af;
+      padding: 0.25rem 0.7rem;
+      border-radius: var(--radius-pill);
+      background: rgba(31, 169, 122, 0.08);
+      color: var(--green-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-mat {
+      border-radius: 16px;
+      background: linear-gradient(135deg, #0b4b36, #1fa97a);
+      padding: 1.1rem;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 1rem;
+      align-items: center;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .hero-mat-figure {
+      position: relative;
+      height: 150px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 20% 0, rgba(255, 255, 255, 0.18), transparent 55%),
+        radial-gradient(circle at 80% 100%, rgba(230, 57, 70, 0.4), transparent 55%);
+      overflow: hidden;
+    }
+
+    .hero-mat-person {
+      position: absolute;
+      inset: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.8rem;
+      text-align: center;
+      padding: 0.5rem;
+    }
+
+    .hero-mat-person::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 999px;
+      border: 1px dashed rgba(255, 255, 255, 0.4);
+    }
+
+    .hero-mat-person span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-mat-overlay {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-pill);
+      background: rgba(0, 0, 0, 0.35);
+      font-size: 0.7rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .hero-mat-overlay-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #4ade80;
+      box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.4);
+    }
+
+    .hero-mat-info-title {
+      font-size: 0.9rem;
+      font-weight: 600;
       margin-bottom: 0.25rem;
     }
 
-    .hero-metric-value {
-      font-size: 1.05rem;
-      font-weight: 600;
+    .hero-mat-info-text {
+      font-size: 0.8rem;
+      opacity: 0.9;
+      margin-bottom: 0.7rem;
     }
 
-    .hero-metric-tag {
-      font-size: 0.7rem;
-      color: #bbf7d0;
+    .hero-mat-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.5rem;
+      font-size: 0.75rem;
+    }
+
+    .metric {
+      padding: 0.45rem 0.55rem;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.18);
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .metric-label {
+      opacity: 0.8;
+    }
+
+    .metric-value {
+      font-weight: 600;
     }
 
     .hero-card-footer {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 0.75rem;
+      align-items: center;
       font-size: 0.75rem;
-      color: #e5e7eb;
+      color: var(--text-muted);
     }
 
-    .hero-avatar {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    .hero-card-footer span strong {
+      color: var(--green-dark);
     }
 
-    .hero-avatar-circle {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
+    .hero-floating {
+      position: absolute;
+      right: 0.4rem;
+      bottom: 0.4rem;
+      transform: translate(20%, 20%);
+      width: 140px;
+      padding: 0.7rem 0.8rem;
+      border-radius: 16px;
+      background: var(--white);
+      box-shadow: 0 18px 40px rgba(15, 107, 76, 0.25);
+      font-size: 0.75rem;
+    }
+
+    .hero-floating-title {
       font-weight: 600;
+      margin-bottom: 0.2rem;
     }
 
-    .hero-avatar-meta span {
-      display: block;
-      line-height: 1.2;
-    }
-
-    .hero-avatar-meta span:nth-child(1) {
-      font-weight: 500;
-    }
-
-    .hero-avatar-meta span:nth-child(2) {
-      font-size: 0.7rem;
-      color: #9ca3af;
-    }
-
-    .hero-status-pill {
-      padding: 0.3rem 0.7rem;
+    .hero-floating-bar {
+      margin-top: 0.35rem;
+      height: 6px;
       border-radius: 999px;
-      background: rgba(22, 163, 74, 0.18);
-      color: #bbf7d0;
-      border: 1px solid rgba(22, 163, 74, 0.5);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
+      background: #e5e7eb;
+      overflow: hidden;
     }
 
-    .hero-status-pill span {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
+    .hero-floating-bar-inner {
+      height: 100%;
+      width: 68%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--red-main), #f97316);
     }
 
     /* Stats bar */
-
     .stats-bar {
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
-      border-radius: 18px;
-      padding: 1rem 1.25rem;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08);
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1.25rem;
-      align-items: center;
+      gap: 1.5rem;
+      padding: 1.4rem 1.25rem;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 10px 26px rgba(15, 107, 76, 0.12);
+      margin-bottom: 2.5rem;
     }
 
-    .stats-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
-      font-size: 0.8rem;
+    .stat-item {
+      border-right: 1px solid rgba(15, 107, 76, 0.08);
+      padding-right: 1rem;
     }
 
-    .stats-label {
-      color: var(--text-muted);
+    .stat-item:last-child {
+      border-right: none;
+      padding-right: 0;
     }
 
-    .stats-value {
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--bg-dark);
-    }
-
-    .stats-tag {
+    .stat-label {
       font-size: 0.75rem;
-      color: var(--red-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
     }
 
-    .stats-divider {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, transparent, rgba(148, 163, 184, 0.6), transparent);
-      margin: 0 auto;
+    .stat-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--red-main);
+      margin-bottom: 0.1rem;
+    }
+
+    .stat-caption {
+      font-size: 0.78rem;
+      color: var(--text-muted);
     }
 
     /* Problem */
-
-    .section-header {
-      max-width: 640px;
-      margin-bottom: 1.75rem;
-    }
-
-    .eyebrow {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--green-dark);
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
     .section-title {
       font-size: 1.5rem;
-      letter-spacing: -0.03em;
       margin-bottom: 0.4rem;
-      color: var(--bg-dark);
+      letter-spacing: -0.02em;
     }
 
-    .section-subtitle {
+    .section-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--green-dark);
+      margin-bottom: 0.35rem;
+    }
+
+    .section-intro {
       font-size: 0.95rem;
       color: var(--text-muted);
+      max-width: 36rem;
+      margin-bottom: 1.4rem;
     }
 
     .problem-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
       gap: 2rem;
+      align-items: center;
+    }
+
+    .problem-list {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .problem-item {
+      display: flex;
+      gap: 0.7rem;
       align-items: flex-start;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .problem-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(230, 57, 70, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--red-main);
+      font-size: 0.9rem;
+      flex-shrink: 0;
     }
 
     .problem-card {
       border-radius: var(--radius-lg);
-      padding: 1.5rem 1.6rem;
-      background: rgba(255, 255, 255, 0.95);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
-    }
-
-    .problem-card h3 {
-      font-size: 1.05rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .problem-card p {
+      background: linear-gradient(135deg, #fef2f2, #fee2e2);
+      padding: 1.4rem 1.3rem;
       font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 0.9rem;
+      color: #7f1d1d;
+      box-shadow: 0 12px 30px rgba(220, 38, 38, 0.18);
     }
 
-    .problem-list {
-      list-style: none;
-      display: grid;
-      gap: 0.6rem;
-      font-size: 0.9rem;
-    }
-
-    .problem-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-      color: var(--text-muted);
-    }
-
-    .problem-bullet {
-      margin-top: 0.25rem;
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--red-accent);
-      box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.25);
-    }
-
-    .problem-highlight {
-      border-radius: var(--radius-lg);
-      padding: 1.2rem 1.3rem;
-      background: linear-gradient(
-        135deg,
-        rgba(34, 197, 94, 0.08),
-        rgba(248, 113, 113, 0.08)
-      );
-      border: 1px dashed rgba(148, 163, 184, 0.7);
-      font-size: 0.85rem;
-      color: var(--text-main);
-    }
-
-    .problem-highlight strong {
-      color: var(--green-dark);
+    .problem-card strong {
+      display: block;
+      margin-bottom: 0.4rem;
     }
 
     /* Features */
-
     .features-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.5rem;
+      gap: 1.4rem;
+      margin-top: 1.4rem;
     }
 
     .feature-card {
-      border-radius: var(--radius-lg);
-      padding: 1.4rem 1.4rem 1.5rem;
-      background: rgba(255, 255, 255, 0.96);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      border-radius: var(--radius-md);
+      background: var(--white);
+      padding: 1.1rem 1.1rem 1.2rem;
+      box-shadow: 0 10px 26px rgba(15, 107, 76, 0.08);
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
-        border-color var(--transition-fast), background var(--transition-fast);
-    }
-
-    .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
-      border-color: rgba(34, 197, 94, 0.5);
-      background: #f9fafb;
+      gap: 0.45rem;
+      font-size: 0.9rem;
     }
 
     .feature-icon {
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       border-radius: 12px;
-      background: rgba(34, 197, 94, 0.12);
+      background: rgba(31, 169, 122, 0.08);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
       color: var(--green-dark);
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
+      font-size: 1rem;
     }
 
     .feature-title {
-      font-size: 1rem;
       font-weight: 600;
-      color: var(--bg-dark);
+      font-size: 0.98rem;
     }
 
     .feature-text {
-      font-size: 0.9rem;
       color: var(--text-muted);
-      flex: 1;
-    }
-
-    .feature-tag {
-      font-size: 0.75rem;
-      color: var(--green-dark);
-      background: rgba(34, 197, 94, 0.12);
-      border-radius: 999px;
-      padding: 0.25rem 0.6rem;
-      display: inline-flex;
-      align-self: flex-start;
-      margin-top: 0.25rem;
     }
 
     /* How it works */
-
     .how-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
       gap: 2rem;
       align-items: center;
+      margin-top: 1.2rem;
     }
 
     .steps {
@@ -674,23 +636,20 @@
     .step {
       display: grid;
       grid-template-columns: auto minmax(0, 1fr);
-      gap: 0.9rem;
+      gap: 0.75rem;
       align-items: flex-start;
-      padding: 0.9rem 1rem;
-      border-radius: var(--radius-md);
-      background: rgba(255, 255, 255, 0.96);
-      border: 1px solid rgba(148, 163, 184, 0.4);
     }
 
     .step-number {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 999px;
-      background: rgba(34, 197, 94, 0.12);
+      background: rgba(31, 169, 122, 0.1);
+      border: 1px solid rgba(31, 169, 122, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--green-dark);
     }
@@ -699,129 +658,91 @@
       font-size: 0.95rem;
       font-weight: 600;
       margin-bottom: 0.15rem;
-      color: var(--bg-dark);
     }
 
     .step-text {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
     }
 
-    .how-visual {
-      border-radius: 24px;
-      padding: 1.4rem 1.5rem;
-      background: radial-gradient(circle at top left, #22c55e, #0f172a);
+    .how-card {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 0 0, rgba(31, 169, 122, 0.25), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(230, 57, 70, 0.35), transparent 55%),
+        #022c22;
       color: var(--white);
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
+      padding: 1.4rem 1.3rem;
+      box-shadow: 0 16px 40px rgba(15, 107, 76, 0.4);
+      font-size: 0.9rem;
     }
 
-    .how-visual::after {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background:
-        radial-gradient(circle at 0 0, rgba(248, 113, 113, 0.35), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(34, 197, 94, 0.4), transparent 55%);
-      opacity: 0.9;
-      z-index: -1;
-    }
-
-    .how-title {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .how-text {
-      font-size: 0.85rem;
-      color: #e5e7eb;
-      margin-bottom: 1rem;
-    }
-
-    .how-pill-row {
+    .how-card-header {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.1rem;
-    }
-
-    .how-pill {
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      font-size: 0.75rem;
-      display: inline-flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 0.35rem;
+      margin-bottom: 0.7rem;
     }
 
-    .how-pill span {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
+    .how-chip {
+      padding: 0.25rem 0.7rem;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 107, 76, 0.4);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
-    .how-metrics {
+    .how-card-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.8rem;
-      font-size: 0.8rem;
+      gap: 0.7rem;
+      margin-top: 0.7rem;
     }
 
-    .how-metric {
-      padding: 0.7rem 0.8rem;
-      border-radius: 14px;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(148, 163, 184, 0.6);
+    .how-mini {
+      padding: 0.55rem 0.6rem;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.25);
+      font-size: 0.78rem;
     }
 
-    .how-metric-label {
-      font-size: 0.7rem;
-      color: #cbd5f5;
-      margin-bottom: 0.2rem;
-    }
-
-    .how-metric-value {
-      font-size: 1rem;
-      font-weight: 600;
+    .how-mini strong {
+      display: block;
+      margin-bottom: 0.1rem;
     }
 
     /* Testimonial + signup */
-
     .testimonial-signup {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
       gap: 2rem;
       align-items: center;
+      margin-top: 1.4rem;
     }
 
-    .testimonial-card {
-      border-radius: 24px;
-      padding: 1.6rem 1.7rem;
-      background: rgba(255, 255, 255, 0.96);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    .testimonial {
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      padding: 1.3rem 1.3rem 1.4rem;
+      box-shadow: 0 12px 30px rgba(15, 107, 76, 0.12);
+      font-size: 0.9rem;
       position: relative;
       overflow: hidden;
     }
 
-    .testimonial-quote-mark {
+    .testimonial::before {
+      content: "“";
       position: absolute;
-      top: -10px;
-      right: 18px;
       font-size: 4rem;
-      color: rgba(148, 163, 184, 0.18);
-      pointer-events: none;
+      line-height: 1;
+      color: rgba(31, 169, 122, 0.12);
+      top: -0.8rem;
+      left: 0.6rem;
     }
 
     .testimonial-text {
-      font-size: 0.95rem;
-      color: var(--text-main);
-      margin-bottom: 1.1rem;
+      margin-bottom: 0.9rem;
+      color: var(--text-muted);
     }
 
     .testimonial-author {
@@ -831,92 +752,84 @@
     }
 
     .testimonial-avatar {
-      width: 36px;
-      height: 36px;
+      width: 34px;
+      height: 34px;
       border-radius: 999px;
-      background: linear-gradient(135deg, #f97373, #fb7185);
+      background: linear-gradient(135deg, var(--green-main), var(--red-main));
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--white);
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    .testimonial-meta span:nth-child(1) {
       font-size: 0.9rem;
       font-weight: 600;
-      color: var(--bg-dark);
     }
 
-    .testimonial-meta span:nth-child(2) {
+    .testimonial-meta {
       font-size: 0.8rem;
+    }
+
+    .testimonial-meta strong {
+      display: block;
+      color: var(--text-main);
+    }
+
+    .testimonial-meta span {
       color: var(--text-muted);
     }
 
     .signup-card {
-      border-radius: 24px;
-      padding: 1.6rem 1.7rem;
-      background: linear-gradient(
-        135deg,
-        rgba(34, 197, 94, 0.12),
-        rgba(248, 113, 113, 0.08)
-      );
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #ecfdf3, #fee2e2);
+      padding: 1.4rem 1.3rem 1.5rem;
+      box-shadow: 0 12px 30px rgba(15, 107, 76, 0.18);
+      font-size: 0.9rem;
     }
 
     .signup-title {
-      font-size: 1.05rem;
       font-weight: 600;
-      margin-bottom: 0.4rem;
-      color: var(--bg-dark);
+      margin-bottom: 0.25rem;
     }
 
     .signup-text {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
+      font-size: 0.86rem;
+      color: #374151;
+      margin-bottom: 0.9rem;
     }
 
     .signup-form {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.7rem;
-      margin-bottom: 0.6rem;
+      gap: 0.6rem;
+      margin-bottom: 0.5rem;
     }
 
-    .signup-input-wrap {
+    .input {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(15, 107, 76, 0.2);
+      padding: 0.7rem 0.9rem;
+      font: inherit;
       flex: 1 1 180px;
       min-width: 0;
-    }
-
-    .signup-input {
-      width: 100%;
-      padding: 0.8rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
-      font-size: 0.9rem;
       outline: none;
-      transition: border-color var(--transition-fast), box-shadow var(--transition-fast),
-        background var(--transition-fast);
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.9);
+      transition: border-color var(--transition), box-shadow var(--transition),
+        background var(--transition);
     }
 
-    .signup-input:focus {
-      border-color: rgba(34, 197, 94, 0.9);
-      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.6);
-      background: #ffffff;
+    .input:focus {
+      border-color: var(--green-main);
+      box-shadow: 0 0 0 1px rgba(31, 169, 122, 0.4);
+      background: var(--white);
     }
 
     .signup-hint {
       font-size: 0.75rem;
-      color: var(--text-muted);
+      color: #4b5563;
     }
 
     .signup-hint span {
       color: var(--green-dark);
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .signup-success {
@@ -931,11 +844,10 @@
     }
 
     /* Footer */
-
     footer {
-      border-top: 1px solid rgba(148, 163, 184, 0.35);
-      background: rgba(248, 250, 252, 0.9);
-      margin-top: 1.5rem;
+      border-top: 1px solid rgba(15, 107, 76, 0.08);
+      background: #f9fafb;
+      margin-top: 2rem;
     }
 
     .footer-inner {
@@ -954,45 +866,27 @@
     .footer-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.9rem;
+      gap: 1rem;
     }
 
-    .footer-link {
+    .footer-links a {
       color: var(--text-muted);
-      cursor: pointer;
-      transition: color var(--transition-fast);
     }
 
-    .footer-link:hover {
-      color: var(--green-dark);
-    }
-
-    .footer-sdg {
-      display: inline-flex;
+    .footer-tagline {
+      display: flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      background: rgba(34, 197, 94, 0.08);
-      border: 1px solid rgba(34, 197, 94, 0.3);
-      color: var(--green-dark);
     }
 
-    .footer-sdg span {
-      width: 16px;
-      height: 16px;
-      border-radius: 4px;
-      background: #22c55e;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      font-size: 0.7rem;
-      font-weight: 700;
+    .footer-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green-main);
     }
 
     /* Responsive */
-
     @media (max-width: 960px) {
       .hero,
       .problem-grid,
@@ -1001,76 +895,79 @@
         grid-template-columns: minmax(0, 1fr);
       }
 
-      .hero {
-        padding-top: 2.2rem;
+      .hero-visual {
+        order: -1;
       }
 
-      .hero-card {
-        order: -1;
+      .hero-floating {
+        display: none;
       }
 
       .stats-bar {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-    }
 
-    @media (max-width: 768px) {
-      .nav {
-        padding-inline: 1rem;
+      .features-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .nav-cta {
+      .how-card-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
         display: none;
       }
 
-      .section {
-        padding-inline: 1rem;
+      .nav-cta {
+        display: inline-flex;
+      }
+
+      .hero {
+        padding-top: 2rem;
+      }
+
+      .stats-bar {
+        grid-template-columns: minmax(0, 1fr);
       }
 
       .features-grid {
         grid-template-columns: minmax(0, 1fr);
       }
 
-      .stats-bar {
-        grid-template-columns: minmax(0, 1fr);
+      .section {
+        padding-inline: 1rem;
       }
 
       .hero-card {
-        padding: 1.4rem 1.3rem 1.5rem;
+        padding: 1.2rem 1.1rem;
+      }
+
+      .hero-mat {
+        grid-template-columns: minmax(0, 1fr);
       }
 
       .testimonial-signup {
-        gap: 1.5rem;
+        gap: 1.4rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
       }
 
       .signup-form {
         flex-direction: column;
         align-items: stretch;
-      }
-
-      .btn-primary,
-      .btn-ghost {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-title {
-        font-size: 1.9rem;
-      }
-
-      .hero-subtitle {
-        font-size: 0.9rem;
-      }
-
-      .section-title {
-        font-size: 1.3rem;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
       }
     }
   </style>
@@ -1081,314 +978,303 @@
       <nav class="nav">
         <div class="logo">
           <div class="logo-mark">F</div>
-          <div>FormMat</div>
+          <span>FormMat</span>
         </div>
-        <div class="nav-cta">
-          <div class="nav-pill">
-            <span>3</span>
-            UN SDG: Good Health &amp; Wellbeing
-          </div>
-          <button class="nav-link" id="navJoinBtn">Join beta</button>
+        <div class="nav-links">
+          <a href="#problem">Why it matters</a>
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#early-access">Early access</a>
         </div>
+        <button class="btn btn-secondary nav-cta" onclick="scrollToSignup()">
+          Join beta
+        </button>
       </nav>
     </header>
 
     <main>
       <!-- Hero -->
-      <section class="section hero" id="top">
+      <section class="section hero" aria-labelledby="hero-title">
         <div>
-          <div class="hero-badge">
-            <span>SDG 3</span>
-            Student startup rethinking sedentary living
+          <div class="badge">
+            <span class="badge-dot"></span>
+            <span>Aligned with UN SDG 3: Good Health &amp; Wellbeing</span>
           </div>
-          <h1 class="hero-title">
-            Turn your floor into a <span>virtual personal trainer</span>.
+          <h1 id="hero-title">
+            Turn your living room into a <span>personal trainer</span>.
           </h1>
-          <p class="hero-subtitle">
-            FormMat uses a smart pressure mat and your device camera to track posture,
-            movement and breaks—helping you combat sedentary habits and protect your
-            <strong>long‑term health</strong> from home.
+          <p class="hero-sub">
+            FormMat uses your camera and a smart pressure mat to correct your form in real time,
+            build custom workouts, and keep you moving—safely.
           </p>
-
-          <div class="hero-cta-row">
-            <button class="btn-primary" id="heroCta">
-              Get early access
-              <span>→</span>
-            </button>
-            <button class="btn-ghost" id="scrollHow">
-              See how it works
-              <span>▾</span>
-            </button>
-          </div>
 
           <div class="hero-meta">
             <div class="hero-meta-item">
-              <div class="hero-dot"></div>
-              <span>Designed by students, backed by sports scientists</span>
+              <span class="hero-meta-pill">Move better, live longer</span>
             </div>
             <div class="hero-meta-item">
-              <div class="hero-dot" style="background:#f97373; box-shadow:0 0 0 6px rgba(248,113,113,0.25);"></div>
-              <span>Built around UN SDG 3: Good Health &amp; Wellbeing</span>
+              <span>AI-powered form coaching</span>
+            </div>
+            <div class="hero-meta-item">
+              <span>Designed for busy, sedentary lifestyles</span>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="scrollToSignup()">
+              Get early access
+              <span class="btn-icon">→</span>
+            </button>
+            <button class="btn btn-secondary" onclick="scrollToHow()">
+              See how it works
+            </button>
+          </div>
+
+          <p class="hero-note">
+            <strong>Evidence-led:</strong> Built with physiotherapists and strength coaches to support healthier,
+            more active lives.
+          </p>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <div class="hero-card-title">Today’s Session</div>
+              <div class="hero-card-tag">Smart home workout</div>
+            </div>
+            <div class="hero-mat">
+              <div class="hero-mat-figure">
+                <div class="hero-mat-person">
+                  <span>Live posture map<br />Aligning knees &amp; spine</span>
+                </div>
+                <div class="hero-mat-overlay">
+                  <span class="hero-mat-overlay-dot"></span>
+                  Tracking form
+                </div>
+              </div>
+              <div>
+                <div class="hero-mat-info-title">FormMat Virtual Coach</div>
+                <div class="hero-mat-info-text">
+                  Camera + pressure mat detect your alignment, count reps, and adapt intensity on the fly.
+                </div>
+                <div class="hero-mat-metrics">
+                  <div class="metric">
+                    <span class="metric-label">Squat depth</span>
+                    <span class="metric-value">92% optimal</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Knee tracking</span>
+                    <span class="metric-value">On line</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Session time</span>
+                    <span class="metric-value">14:32</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Reps counted</span>
+                    <span class="metric-value">38</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="hero-card-footer">
+              <span>Today’s focus: <strong>Back-friendly strength</strong></span>
+              <span>Impact: +20% daily movement</span>
+            </div>
+          </div>
+
+          <div class="hero-floating">
+            <div class="hero-floating-title">Sedentary risk score</div>
+            <div>Based on your sitting time &amp; breaks.</div>
+            <div class="hero-floating-bar">
+              <div class="hero-floating-bar-inner"></div>
+            </div>
+            <div style="margin-top: 0.25rem; font-size: 0.72rem;">
+              FormMat nudges you before risk builds up.
             </div>
           </div>
         </div>
-
-        <aside class="hero-card" aria-label="Live posture and movement snapshot">
-          <div class="hero-card-header">
-            <div>
-              <div class="hero-chip">
-                <span class="hero-chip-dot"></span>
-                Live posture session
-              </div>
-              <div class="hero-card-title">Desk Reset • 12 min</div>
-              <div class="hero-card-sub">
-                Camera + pressure mat detect slouching and weight imbalance in real time.
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-card-grid">
-            <div class="hero-metric">
-              <div class="hero-metric-label">Sedentary streak</div>
-              <div class="hero-metric-value">47 min</div>
-              <div class="hero-metric-tag">Break due in 3 min</div>
-            </div>
-            <div class="hero-metric">
-              <div class="hero-metric-label">Posture score</div>
-              <div class="hero-metric-value">82 / 100</div>
-              <div class="hero-metric-tag">+12 vs. last week</div>
-            </div>
-            <div class="hero-metric">
-              <div class="hero-metric-label">Weight balance</div>
-              <div class="hero-metric-value">52% / 48%</div>
-              <div class="hero-metric-tag">Even stance</div>
-            </div>
-            <div class="hero-metric">
-              <div class="hero-metric-label">Micro‑moves</div>
-              <div class="hero-metric-value">19</div>
-              <div class="hero-metric-tag">Goal: 24 / hour</div>
-            </div>
-          </div>
-
-          <div class="hero-card-footer">
-            <div class="hero-avatar">
-              <div class="hero-avatar-circle">AI</div>
-              <div class="hero-avatar-meta">
-                <span>FormMat Coach</span>
-                <span>“Roll shoulders, shift weight, breathe.”</span>
-              </div>
-            </div>
-            <div class="hero-status-pill">
-              <span></span>
-              Real‑time guidance on
-            </div>
-          </div>
-        </aside>
       </section>
 
       <!-- Stats bar -->
       <section class="section" aria-label="Sedentary lifestyle statistics">
         <div class="stats-bar">
-          <div class="stats-item">
-            <div class="stats-label">Students sit on average</div>
-            <div class="stats-value">8–10 hrs/day</div>
-            <div class="stats-tag">Linked to higher chronic disease risk</div>
+          <div class="stat-item">
+            <div class="stat-label">Sedentary time</div>
+            <div class="stat-value">9+ hrs</div>
+            <div class="stat-caption">Average adult sitting time per day in many countries.</div>
           </div>
-          <div class="stats-divider" aria-hidden="true"></div>
-          <div class="stats-item">
-            <div class="stats-label">Physical inactivity causes</div>
-            <div class="stats-value">5M deaths/yr</div>
-            <div class="stats-tag">Worldwide, across all ages</div>
+          <div class="stat-item">
+            <div class="stat-label">Mortality risk</div>
+            <div class="stat-value">+20–30%</div>
+            <div class="stat-caption">Higher risk of early death with prolonged sitting and low activity.</div>
           </div>
-          <div class="stats-divider" aria-hidden="true"></div>
-          <div class="stats-item">
-            <div class="stats-label">Up to</div>
-            <div class="stats-value">30% higher</div>
-            <div class="stats-tag">Risk of heart disease &amp; stroke</div>
+          <div class="stat-item">
+            <div class="stat-label">Chronic disease</div>
+            <div class="stat-value">+40%</div>
+            <div class="stat-caption">Increased risk of heart disease and type 2 diabetes.</div>
           </div>
-          <div class="stats-divider" aria-hidden="true"></div>
-          <div class="stats-item">
-            <div class="stats-label">But just</div>
-            <div class="stats-value">2–5 min</div>
-            <div class="stats-tag">Of movement each hour can help undo it</div>
+          <div class="stat-item">
+            <div class="stat-label">Back &amp; joint pain</div>
+            <div class="stat-value">80%</div>
+            <div class="stat-caption">Of adults experience back pain at some point in their lives.</div>
           </div>
         </div>
       </section>
 
       <!-- Problem -->
       <section class="section" id="problem">
-        <div class="section-header">
-          <div class="eyebrow">The problem</div>
-          <h2 class="section-title">Sedentary study habits are silently harming student health.</h2>
-          <p class="section-subtitle">
-            Long hours at desks, exam stress and remote learning mean students are sitting more than ever.
-            Most tools track steps—not the hours of static, slouched posture that drive back pain, fatigue
-            and long‑term health risks.
-          </p>
-        </div>
-
         <div class="problem-grid">
-          <div class="problem-card">
-            <h3>Why sitting still is more dangerous than it looks</h3>
-            <p>
-              Sedentary time is now considered an independent risk factor—separate from how much you
-              exercise. You can hit the gym and still be at risk if you spend the rest of the day glued
-              to a chair.
+          <div>
+            <div class="section-kicker">The problem</div>
+            <h2 class="section-title">We sit too much and move too poorly.</h2>
+            <p class="section-intro">
+              Sedentary lifestyles are quietly eroding our health. Even when we do exercise, poor form and
+              inconsistent routines can lead to pain, injury, and frustration—pushing us back to the sofa.
             </p>
-            <ul class="problem-list">
-              <li>
-                <div class="problem-bullet"></div>
-                <span>Reduced blood flow and muscle activity increase the risk of cardiovascular disease and type 2 diabetes.</span>
-              </li>
-              <li>
-                <div class="problem-bullet"></div>
-                <span>Static, slouched posture compresses the spine, leading to back and neck pain, headaches and poor focus.</span>
-              </li>
-              <li>
-                <div class="problem-bullet"></div>
-                <span>Without feedback, most students underestimate how long they’ve been sitting—and how often they should move.</span>
-              </li>
-            </ul>
+            <div class="problem-list">
+              <div class="problem-item">
+                <div class="problem-icon">!</div>
+                <div>
+                  Long hours at a desk or on the sofa reduce cardiovascular fitness, increase blood pressure,
+                  and impair metabolic health.
+                </div>
+              </div>
+              <div class="problem-item">
+                <div class="problem-icon">!</div>
+                <div>
+                  Without guidance, it’s easy to squat, hinge, or press with poor alignment—stressing joints and
+                  reinforcing bad movement patterns.
+                </div>
+              </div>
+              <div class="problem-item">
+                <div class="problem-icon">!</div>
+                <div>
+                  Traditional personal training is expensive and hard to fit into busy schedules, leaving many
+                  people without support.
+                </div>
+              </div>
+            </div>
           </div>
-
-          <div class="problem-highlight">
-            <strong>FormMat</strong> is built to support
-            <strong>UN SDG 3: Good Health &amp; Wellbeing</strong> by turning everyday study spaces into
-            active, responsive environments. Instead of nagging you to “work out more”, it nudges you to
-            <strong>sit better, move more often and listen to your body</strong>—right where you already are.
-          </div>
+          <aside class="problem-card">
+            <strong>UN SDG 3 calls for good health and wellbeing for all.</strong>
+            FormMat is built to make safe, effective movement accessible at home—helping people reduce sedentary
+            time, build strength, and protect long-term health without needing a gym or in-person trainer.
+          </aside>
         </div>
       </section>
 
-      <!-- Features / Solution -->
+      <!-- Features -->
       <section class="section" id="features">
-        <div class="section-header">
-          <div class="eyebrow">The solution</div>
-          <h2 class="section-title">A smart mat that behaves like a home personal trainer.</h2>
-          <p class="section-subtitle">
-            FormMat combines a pressure‑sensing mat with your device camera to understand how you sit,
-            stand and move—then coaches you with simple, science‑backed micro‑breaks throughout the day.
-          </p>
-        </div>
+        <div class="section-kicker">The solution</div>
+        <h2 class="section-title">FormMat: your virtual, at-home personal trainer.</h2>
+        <p class="section-intro">
+          A smart mat and camera-powered coach that understands how you move, corrects your form, and designs
+          workouts that fit your life—not the other way around.
+        </p>
 
         <div class="features-grid">
           <article class="feature-card">
             <div class="feature-icon">🎯</div>
-            <h3 class="feature-title">Posture‑aware coaching</h3>
+            <div class="feature-title">Real-time form correction</div>
             <p class="feature-text">
-              The camera tracks your upper‑body alignment while the mat senses how your weight is
-              distributed. Together, they detect slouching, leaning and “one‑hip” standing, then suggest
-              quick corrections in real time.
+              Computer vision and pressure mapping detect joint angles, weight distribution, and balance—then
+              cue you to adjust in the moment.
             </p>
-            <div class="feature-tag">Camera + mat intelligence</div>
           </article>
-
           <article class="feature-card">
-            <div class="feature-icon">⏱️</div>
-            <h3 class="feature-title">Micro‑breaks, not marathons</h3>
+            <div class="feature-icon">🧠</div>
+            <div class="feature-title">Adaptive, custom workouts</div>
             <p class="feature-text">
-              Instead of asking for hour‑long workouts, FormMat nudges you to take 2–5 minute movement
-              breaks based on your actual sedentary streaks—protecting your health without derailing your
-              study flow.
+              FormMat learns from your performance, energy, and schedule to build progressive, personalised
+              programs that keep you engaged.
             </p>
-            <div class="feature-tag">Evidence‑informed timing</div>
           </article>
-
           <article class="feature-card">
             <div class="feature-icon">📊</div>
-            <h3 class="feature-title">Health‑first analytics</h3>
+            <div class="feature-title">Rep counting &amp; habit tracking</div>
             <p class="feature-text">
-              Track posture scores, balance, sedentary time and completed breaks in a simple dashboard.
-              No vanity metrics—just the signals that matter for long‑term wellbeing and SDG 3 impact.
+              Automatic rep counting, streaks, and gentle nudges to break up long sitting periods—so movement
+              becomes a daily habit, not a chore.
             </p>
-            <div class="feature-tag">Designed for students</div>
           </article>
         </div>
       </section>
 
       <!-- How it works -->
       <section class="section" id="how">
-        <div class="section-header">
-          <div class="eyebrow">How it works</div>
-          <h2 class="section-title">Camera + pressure mat = your virtual home trainer.</h2>
-          <p class="section-subtitle">
-            FormMat turns everyday devices into a coaching system that understands your posture and
-            movement—without needing a gym, wearables or complicated setups.
-          </p>
-        </div>
+        <div class="section-kicker">How it works</div>
+        <h2 class="section-title">Camera + pressure mat = smarter, safer movement.</h2>
+        <p class="section-intro">
+          FormMat combines a depth-aware camera with a pressure-sensitive mat to act as a virtual coach in your
+          living room—guiding every rep and every session.
+        </p>
 
         <div class="how-grid">
-          <div class="steps" aria-label="Steps explaining how FormMat works">
+          <div class="steps" aria-label="How FormMat works in three steps">
             <div class="step">
               <div class="step-number">1</div>
               <div>
-                <div class="step-title">Place the mat &amp; position your camera</div>
+                <div class="step-title">Set up your space</div>
                 <p class="step-text">
-                  Lay the pressure mat under your feet or chair and point your laptop or phone camera
-                  towards your upper body. FormMat calibrates in under 30 seconds to learn your neutral
-                  posture and stance.
+                  Place the FormMat on the floor, position your camera (laptop, TV, or phone) in front of you,
+                  and stand on the mat. The system calibrates your height, stance, and range of motion in under
+                  a minute.
                 </p>
               </div>
             </div>
-
             <div class="step">
               <div class="step-number">2</div>
               <div>
-                <div class="step-title">FormMat tracks posture and pressure in real time</div>
+                <div class="step-title">Move with real-time guidance</div>
                 <p class="step-text">
-                  As you study, the camera analyses your spine alignment while the mat senses how your
-                  weight shifts. When it detects slouching, asymmetry or long periods of stillness, it
-                  quietly flags it in your dashboard.
+                  As you squat, lunge, or press, the camera tracks your joints while the mat senses pressure and
+                  balance. FormMat flags unsafe positions, suggests micro-adjustments, and counts clean reps
+                  automatically.
                 </p>
               </div>
             </div>
-
             <div class="step">
               <div class="step-number">3</div>
               <div>
-                <div class="step-title">Your “personal trainer” nudges you to move</div>
+                <div class="step-title">Get custom workouts that evolve</div>
                 <p class="step-text">
-                  When it’s time, FormMat suggests short, guided micro‑moves—like standing resets,
-                  ankle‑pumps or shoulder rolls—tailored to what your camera and mat are seeing. You get
-                  the benefits of a trainer, right on your floor.
+                  After each session, FormMat analyses your form, fatigue, and consistency. It then builds
+                  tailored workouts—progressing difficulty, targeting weak links, and scheduling short movement
+                  breaks to offset sedentary time.
                 </p>
               </div>
             </div>
           </div>
 
-          <aside class="how-visual" aria-label="FormMat wellbeing snapshot">
-            <div class="how-title">Today’s wellbeing snapshot</div>
-            <p class="how-text">
-              Built to support SDG 3, FormMat focuses on sustainable, everyday habits—not perfection.
-            </p>
-
-            <div class="how-pill-row">
-              <div class="how-pill">
-                <span></span>
-                6 / 8 movement breaks completed
+          <aside class="how-card" aria-label="FormMat coaching overview">
+            <div class="how-card-header">
+              <div>
+                <div style="font-size: 0.8rem; opacity: 0.8;">Live coaching overlay</div>
+                <div style="font-weight: 600; margin-top: 0.1rem;">You’re 3° away from ideal form</div>
               </div>
-              <div class="how-pill">
-                <span></span>
-                24% less sedentary time vs. last week
-              </div>
+              <div class="how-chip">Virtual trainer</div>
             </div>
-
-            <div class="how-metrics">
-              <div class="how-metric">
-                <div class="how-metric-label">Average posture score</div>
-                <div class="how-metric-value">79 / 100</div>
+            <p>
+              FormMat blends visual and pressure data to understand how your whole body moves—not just isolated
+              muscles. That means safer joints, stronger patterns, and more confidence in every workout.
+            </p>
+            <div class="how-card-grid">
+              <div class="how-mini">
+                <strong>Camera</strong>
+                Tracks posture, joint angles, and tempo to spot compensations and asymmetries.
               </div>
-              <div class="how-metric">
-                <div class="how-metric-label">Study focus rating</div>
-                <div class="how-metric-value">4.5 ★</div>
+              <div class="how-mini">
+                <strong>Pressure mat</strong>
+                Reads foot and hand pressure to detect balance, weight shifts, and stability.
               </div>
-              <div class="how-metric">
-                <div class="how-metric-label">Back pain check‑ins</div>
-                <div class="how-metric-value">↓ 38%</div>
+              <div class="how-mini">
+                <strong>AI coach</strong>
+                Combines both signals to cue you verbally and visually in real time.
               </div>
-              <div class="how-metric">
-                <div class="how-metric-label">Daily streak</div>
-                <div class="how-metric-value">12 days</div>
+              <div class="how-mini">
+                <strong>Smart programs</strong>
+                Adjusts sets, reps, and exercise selection based on your performance and recovery.
               </div>
             </div>
           </aside>
@@ -1396,160 +1282,108 @@
       </section>
 
       <!-- Testimonial + signup -->
-      <section class="section" id="signup">
-        <div class="section-header">
-          <div class="eyebrow">Students first</div>
-          <h2 class="section-title">Built with real student bodies and schedules in mind.</h2>
-          <p class="section-subtitle">
-            We’re co‑designing FormMat with students, physios and sports scientists to make sure it fits
-            real lives—not ideal ones.
-          </p>
-        </div>
-
+      <section class="section" id="early-access">
         <div class="testimonial-signup">
-          <article class="testimonial-card" aria-label="Customer testimonial">
-            <div class="testimonial-quote-mark">“</div>
+          <figure class="testimonial">
             <p class="testimonial-text">
-              “I used to finish revision days with a stiff back and a pounding headache. With FormMat,
-              I’m actually aware of how long I’ve been sitting—and the tiny breaks it suggests are
-              realistic enough that I actually do them. My focus is better, and my body doesn’t hate me
-              after a library marathon.”
+              “I used to sit for 10 hours a day and ‘exercise’ once a week with nagging back pain. With FormMat,
+              I’m moving in short, guided sessions throughout the week—and my form is finally solid. My physio
+              noticed the difference before I even told them.”
             </p>
-            <div class="testimonial-author">
+            <figcaption class="testimonial-author">
               <div class="testimonial-avatar">A</div>
               <div class="testimonial-meta">
-                <span>Amira, 3rd‑year Medical Student</span>
-                <span>Pilot user, Birmingham</span>
+                <strong>Alex, 34</strong>
+                <span>Remote worker, early FormMat tester</span>
               </div>
-            </div>
-          </article>
+            </figcaption>
+          </figure>
 
-          <aside class="signup-card" aria-label="Email sign-up form">
-            <h3 class="signup-title">Join the early‑access list</h3>
+          <div class="signup-card">
+            <div class="signup-title">Be the first to step on FormMat.</div>
             <p class="signup-text">
-              Be the first to try FormMat, get progress updates and help us shape a tool that genuinely
-              supports student health and SDG 3.
+              We’re inviting a small group of early adopters to shape the future of at-home coaching. Join the
+              waitlist for beta access, launch updates, and special pricing.
             </p>
-
-            <form class="signup-form" id="emailForm">
-              <div class="signup-input-wrap">
-                <label for="email" class="visually-hidden">Email address</label>
-                <input
-                  type="email"
-                  id="email"
-                  class="signup-input"
-                  placeholder="you@university.ac.uk"
-                  required
-                />
-              </div>
-              <button type="submit" class="btn-primary">
-                Request invite
-                <span>→</span>
+            <form class="signup-form" id="signup-form">
+              <input
+                type="email"
+                class="input"
+                id="email-input"
+                placeholder="Enter your email"
+                aria-label="Email address"
+                required
+              />
+              <button type="submit" class="btn btn-primary">
+                Join the waitlist
               </button>
             </form>
             <p class="signup-hint">
-              No spam, ever. Just occasional updates and opportunities to
-              <span>co‑create with the FormMat team</span>.
+              No spam. Just thoughtful updates on how FormMat supports <span>good health &amp; wellbeing</span>.
             </p>
-            <p class="signup-success" id="signupSuccess">
-              Thanks for signing up! Check your inbox for a confirmation email shortly.
+            <p id="signup-success" class="signup-success">
+              Thanks for your interest! You’re on the list—we’ll be in touch soon.
             </p>
-          </aside>
+          </div>
         </div>
       </section>
     </main>
 
     <footer>
       <div class="footer-inner">
-        <div>
-          <span>© <span id="year"></span> FormMat.</span>
-          <span>Student‑led venture for healthier study habits.</span>
+        <div class="footer-tagline">
+          <span class="footer-dot"></span>
+          <span>FormMat · Moving towards UN SDG 3: Good Health &amp; Wellbeing</span>
         </div>
         <div class="footer-links">
-          <div class="footer-link">Privacy</div>
-          <div class="footer-link">Contact</div>
-          <div class="footer-link">Press kit</div>
-          <div class="footer-sdg">
-            <span>3</span>
-            Good Health &amp; Wellbeing
-          </div>
+          <span>© <span id="year"></span> FormMat</span>
+          <a href="#features">Product</a>
+          <a href="#early-access">Early access</a>
+          <a href="#problem">Impact</a>
         </div>
       </div>
     </footer>
   </div>
 
-  <style>
-    /* Small utility for hidden label */
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-  </style>
-
   <script>
-    // Set current year in footer
-    document.getElementById("year").textContent = new Date().getFullYear();
-
     // Smooth scroll helpers
-    function smoothScrollTo(selector) {
-      const el = document.querySelector(selector);
-      if (!el) return;
-      window.scrollTo({
-        top: el.getBoundingClientRect().top + window.scrollY - 80,
-        behavior: "smooth",
+    function scrollToSignup() {
+      const el = document.getElementById("early-access");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function scrollToHow() {
+      const el = document.getElementById("how");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    // Simple email signup handler (front-end only demo)
+    const form = document.getElementById("signup-form");
+    const emailInput = document.getElementById("email-input");
+    const successMsg = document.getElementById("signup-success");
+
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const email = emailInput.value.trim();
+
+        if (!email || !email.includes("@")) {
+          emailInput.focus();
+          emailInput.style.borderColor = "#e63946";
+          setTimeout(() => {
+            emailInput.style.borderColor = "rgba(15, 107, 76, 0.2)";
+          }, 1200);
+          return;
+        }
+
+        // Simulate success
+        successMsg.classList.add("visible");
+        form.reset();
       });
     }
 
-    document.getElementById("scrollHow")?.addEventListener("click", function () {
-      smoothScrollTo("#how");
-    });
-
-    document.getElementById("navJoinBtn")?.addEventListener("click", function () {
-      smoothScrollTo("#signup");
-    });
-
-    document.getElementById("heroCta")?.addEventListener("click", function () {
-      smoothScrollTo("#signup");
-      const emailInput = document.getElementById("email");
-      if (emailInput) {
-        setTimeout(() => emailInput.focus(), 600);
-      }
-    });
-
-    // Simple email form handling (front-end only demo)
-    const emailForm = document.getElementById("emailForm");
-    const signupSuccess = document.getElementById("signupSuccess");
-
-    emailForm?.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const emailInput = document.getElementById("email");
-      const email = emailInput.value.trim();
-
-      if (!email) return;
-
-      // Very light email pattern check
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(email)) {
-        emailInput.focus();
-        emailInput.select();
-        emailInput.style.borderColor = "#ff4b5c";
-        setTimeout(() => {
-          emailInput.style.borderColor = "";
-        }, 1200);
-        return;
-      }
-
-      // Simulate success
-      signupSuccess.classList.add("visible");
-      emailInput.value = "";
-    });
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
